@@ -2,7 +2,7 @@ import prisma from "@/lib/data";
 import { unstable_cache as cache } from "next/cache";
 
 const getCachedPost = cache((slug) => {
-  return prisma.post.findUnique({
+  return prisma?.post?.findUnique({
     where: {
       slug,
     },
@@ -10,7 +10,7 @@ const getCachedPost = cache((slug) => {
 });
 
 export default async function PostPage({ params }: any) {
-  const post = await getCachedPost(params.slug);
+  const post = await getCachedPost(params?.slug);
 
   return (
     <main className="flex flex-col items-center gap-y-5 pt-24 text-center">
